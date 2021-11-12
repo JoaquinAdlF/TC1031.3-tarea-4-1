@@ -3,6 +3,7 @@
 // Janet Espronceda A01197814
 
 #include <iostream>
+#include "Vertice.h"
 using namespace std;
 
 class Arista{ 
@@ -19,6 +20,7 @@ class Arista{
     //metodos setters
     void setvi(Vertice _vi);
     void setvj(Vertice _vj);
+    void imprimirArista();
 };
 
 Arista::Arista(){
@@ -46,4 +48,8 @@ void Arista::setvi(Vertice _vi){
 
 void Arista::setvj(Vertice _vj){
   vj = _vj;
+}
+
+void Arista::imprimirArista(){
+  cout << "(" << vi.getdato() << ", " << vj.getdato() << ")";
 }

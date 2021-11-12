@@ -19,6 +19,7 @@ class Vertice{
     //metodos setters
     void setid(int _id);
     void setdato(int _dato);
+    void imprimirVertice();
 };
 
 Vertice::Vertice(){
@@ -45,4 +46,8 @@ void Vertice::setid(int _id){
 
 void Vertice::setdato(int _dato){
   dato = _dato;
+}
+
+void Vertice::imprimirVertice(){
+  cout << "ID: " << getid() << endl << "Dato: " << getdato();
 }

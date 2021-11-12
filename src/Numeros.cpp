@@ -8,42 +8,63 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include "Vertice.h"
 #include "Arista.h"
 using namespace std;
 
 int main() {
   string n_in, data;
-  int counter = 0;
-  int nData = 0;
+  int continuar;
 
-  cout << "Ingrese una lista de numeros separados por comas (1,2,3): ";
-  cin >> n_in;
-  stringstream string_stream(n_in), string_stream2(n_in);
+  do{
+    int counter = 0;
+    int nData = 0;
 
-  while(getline(string_stream, data, ',')){
-    nData++;
-  }
+    cout << "Ingrese una lista de numeros separados por comas (1,2,3): ";
+    cin >> n_in;
+    stringstream string_stream(n_in), string_stream2(n_in);
 
-  Vertice vertices[nData];
-  int dataArr[nData], dataInt;
-  
-  while(getline(string_stream2, data, ',')){
-    dataInt = stoi(data);
-    dataArr[counter] =  dataInt;
-    counter++;
-  }
+    while(getline(string_stream, data, ',')){
+      nData++;
+    }
 
-  for(int i = 0; i<nData; i++){
-    int dato = dataArr[i];
-    vertices[i].setdato(dato);
-    vertices[i].setid(i);
-  }
-  
-  Arista aristas[nData - 1];
+    Vertice vertices[nData];
+    int dataArr[nData], dataInt;
+    
+    while(getline(string_stream2, data, ',')){
+      dataInt = stoi(data);
+      dataArr[counter] =  dataInt;
+      counter++;
+    }
 
-  for(int i = 0; i<nData-1; i++){
-    aristas[i].setvi(vertices[i]);
-    aristas[i].setvj(vertices[i+1]);
-  }
+    for(int i = 0; i<nData; i++){
+      int dato = dataArr[i];
+      vertices[i].setdato(dato);
+      vertices[i].setid(i);
+    }
+    
+    Arista aristas[nData - 1];
+
+    for(int i = 0; i<nData-1; i++){
+      aristas[i].setvi(vertices[i]);
+      aristas[i].setvj(vertices[i+1]);
+    }
+
+    cout << "Impresion de los datos:" << endl << "Vertices:" << endl << "----------------------------" << endl;
+
+    for(int i = 0; i<nData; i++){
+      vertices[i].imprimirVertice();
+      cout << endl << "----------------------------" << endl;
+    }
+
+    cout << "Aristas:" << endl << "----------------------------" << endl;
+
+    for(int i = 0; i<nData-1; i++){
+      aristas[i].imprimirArista();
+      cout << endl << "----------------------------" << endl;
+    }
+
+    cout << endl << "¿Intentar de nuevo? 0 = no, 1 = si" << endl;
+    cin >> continuar;
+
+  }while(continuar ==  1);
 } 
